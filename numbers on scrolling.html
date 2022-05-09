@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #181818;
+        color: #fff;
+      }
+      section {
+        background-color: rgb(19, 57, 94);
+        height: 200px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 1000px auto;
+        width: 500px;
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div data-goal="200">0</div>
+      <div data-goal="500">0</div>
+      <div data-goal="700">0</div>
+    </section>
+    <script>
+      let divs = document.querySelectorAll("div");
+      let check = false;
+      window.onscroll = function () {
+        if (!check) {
+          divs.forEach((e) => {
+            if (window.scrollY >= document.querySelector("section").offsetTop - 350) {
+              let goal = e.dataset.goal;
+              let interval = setInterval(() => {
+                e.textContent++;
+                if (e.textContent == goal) {
+                  clearInterval(interval);
+                }
+              }, 2000 / goal);
+              check = true;
+            }
+          });
+        }
+      };
+    </script>
+  </body>
+</html>

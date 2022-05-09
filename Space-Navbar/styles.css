@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+body {
+  background-image: url("images/background-home-desktop.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  height: 100vh;
+  overflow-x: hidden;
+}
+@media (max-width: 50em) {
+  body {
+    background-image: url("images/background-home-tablet.jpg");
+  }
+}
+@media (max-width: 30em) {
+  body {
+    background-image: url("images/background-home-mobile.jpg");
+  }
+}
+button {
+  display: none;
+}
+ul {
+  list-style: none;
+  display: flex;
+  gap: var(--gap, 2.5rem);
+  padding: 2em;
+  margin-top: 2em;
+  position: absolute;
+  right: 6%;
+  background-color: hsl(0, 0%, 0%, 0.5);
+  transition: 0.3s ease-out;
+}
+@media (max-width: 50em) {
+  ul {
+    margin: 0;
+    position: fixed;
+    inset: 0 0 0 40%;
+    z-index: 1000;
+    flex-direction: column;
+    padding: min(30vh, 10rem) 2rem;
+    --gap: 2rem;
+    transform: translateX(100%);
+  }
+  button {
+    display: block;
+    background-image: url(images/icon-hamburger.svg);
+    background-repeat: no-repeat;
+    aspect-ratio: 1;
+    width: 2em;
+    border: none;
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    z-index: 9999;
+    background-color: transparent;
+  }
+  button[data-visibility="true"] {
+    background-image: url(images/icon-close.svg);
+  }
+}
+@supports (backdrop-filter: blur(1rem)) {
+  ul {
+    background-color: hsl(0, 0%, 100%, 0.1);
+    backdrop-filter: blur(1rem);
+  }
+}
+button[data-visibility="true"] + nav ul {
+  transform: translateX(0%);
+}
+a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+a > [aria-hidden="true"] {
+  font-weight: 700;
+  margin-inline-end: 0.5rem;
+}
+.resize-animation-stopper * {
+  animation: none !important;
+  transition: none !important;
+}

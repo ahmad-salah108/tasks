@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input{
+      border: 1px solid #aaa;
+      padding: 10px;
+      outline: none;
+      position: relative;
+    }
+    input:focus{
+      border: 1px solid #666;
+    }
+    div{
+      width: fit-content;
+      position: relative;
+    }
+    .limit{
+      height: 5px;
+      background-color: dodgerblue;
+      display: inline-block;
+      width: 0;
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="text" maxlength="10">
+    <span class="limit"></span>
+  </div>
+  <script>
+    let input = document.querySelector('input');
+    let span = document.querySelector('.limit');
+    input.oninput = function(){
+      span.style.width = `${(this.value.length / input.maxLength) * 100}%`;
+    };
+  </script>
+</body>
+</html>
